@@ -48,12 +48,12 @@ function dataChartYearly(startYear, endYear) {
   
   var data_array = [
     ['Year', 'Sales'],
-//    ['2004',  1000],
-//    ['2005',  1170],
-//    ['2006',  660],
-//    ['2007',  1030],
-//    ['2008',  2000],
-//    ['2009',  3000]
+    ['2004',  1000],
+    ['2005',  1170],
+    ['2006',  660],
+    ['2007',  1030],
+    ['2008',  2000],
+    ['2009',  3000]
   ];
   
   if(data_array.length > 1){
@@ -179,7 +179,7 @@ function straightForecast(data) {
   
   for(var i=1; i<data.length-1; i++) {
     var temp = [];
-    var growth_period = data[i][0] + " - " + data[i][0];
+    var growth_period = data[i][0] + " - " + data[i+1][0];
     var growth_amount = parseFloat((data[i+1][1] - data[i][1])/ data[i][1]);
     temp.push(growth_period);
     temp.push(growth_amount);
