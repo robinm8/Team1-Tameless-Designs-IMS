@@ -16,39 +16,44 @@
   <body>
     <div>
       <!-- Header -->
-      <div id="header" class="d-flex justify-content-center border-bottom mb-5 mt-4 pb-4">
+      <div id="header" class="d-flex justify-content-center border-bottom mb-5 pt-4 pb-4">
         <header class="font-weight-bold">HEADER</header>
       </div>
 
       <!-- Input area for the chart data -->
-      <div id="showChart" class="container mt-5 mb-5">
-          <!-- Input area for the yearly sales -->
-          <div class="form-group col d-flex justify-content-center mb-5">
-            <div class="col-6">
-              <label for="yearlyRangeLower">Enter start year</label>
-              <input id="yearlyRangeLower" class="form-control" type="number" v-model="yearlyRangeLower"/>
-              <label for="yearlyRangeUpper">Enter end year</label>
-              <input id="yearlyRangeUpper" class="form-control" type="number" v-model="yearlyRangeUpper"/>
-              <input type="submit" class="btn btn-primary pl-5 pt-3 pb-3 pr-5" v-on:click="yearly" value="Yearly"/>
-            </div>
+      <div id="showChart" class="container mt-5 mb-5 border">
+        <!-- Input area for the yearly sales -->
+        <div id="leftYearly" class="form-group col d-flex justify-content-start mb-5">
+          <div class="col-6">
+            <label for="yearlyRangeLower">Enter start year</label>
+            <input id="yearlyRangeLower" class="form-control mb-3" type="number" v-model="yearlyRangeLower"/>
+            <label for="yearlyRangeUpper">Enter end year</label>
+            <input id="yearlyRangeUpper" class="form-control mb-3" type="number" v-model="yearlyRangeUpper"/>
+            <input type="submit" class="btn btn-primary pl-5 pt-3 pb-3 pr-5" v-on:click="yearly" value="Yearly"/>
           </div>
+        </div>
 
-          <!-- Input area for the monthly or seasonal sales -->
-          <div class="from-group col d-flex justify-content-center">
-            <div class="col-6">
-              <label for="specificYear">Enter specific year</label>
-              <input id="specificYear" class="form-control" type="number" v-model="specificYear"/>
-              <input type="submit" class="btn btn-primary pl-5 pt-3 pb-3 pr-5" v-on:click="monthly" value="Monthly"/>
-              <input type="submit" class="btn btn-primary pl-5 pt-3 pb-3 pr-5" v-on:click="seasonal" value="Seasonal"/>
-            </div>
+        <!-- Input area for the monthly or seasonal sales -->
+        <div id="rightMonthlySeasonal" class="from-group col d-flex justify-content-end">
+          <div class="col-6">
+            <label for="specificYear">Enter specific year</label>
+            <input id="specificYear" class="form-control mb-3" type="number" v-model="specificYear"/>
+            <input type="submit" class="btn btn-primary pl-5 pt-3 pb-3 pr-5" v-on:click="monthly" value="Monthly"/>
+            <input type="submit" class="btn btn-primary pl-5 pt-3 pb-3 pr-5" v-on:click="seasonal" value="Seasonal"/>
           </div>
+        </div>
         
-        <!-- Shows the sales data graph -->
-        <div id="dataLineChart"></div>
+        <!-- Shows the sales analysis from the given data -->
+        <div id="analysisArea">
+          <div id="dataLineChart"></div>
+          <div id="straightForecastChart"></div>
+        </div>
+        
+        
       </div>
 
       <!-- Footer -->
-      <div id="footer" class="d-flex justify-content-center border-top mt-5  mb-4 pt-4 fixed-bottom">
+      <div id="footer" class="d-flex justify-content-center border-top mt-5  pb-4 pt-4 fixed-bottom">
         <footer class="font-weight-bold">FOOTER</footer>
       </div>
     </div>

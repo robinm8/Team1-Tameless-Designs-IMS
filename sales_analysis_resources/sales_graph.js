@@ -41,41 +41,53 @@ var vueChartSales = new Vue({
   }
 });
 
-// Creates a chart that shows yearly company sales of specified year range in a line-chart format
+// Creates a chart that shows yearly company sales of specified year range in    a line-chart format
 function dataChartYearly(startYear, endYear) {
+  document.getElementById("dataLineChart").innerHTML = "";
+  document.getElementById("straightForecastChart").innerHTML = "";
+  
   var data_array = [
     ['Year', 'Sales'],
-    ['2004',  1000],
-    ['2005',  1170],
-    ['2006',  660],
-    ['2007',  1030],
-    ['2008',  2000],
-    ['2009',  3000]
+//    ['2004',  1000],
+//    ['2005',  1170],
+//    ['2006',  660],
+//    ['2007',  1030],
+//    ['2008',  2000],
+//    ['2009',  3000]
   ];
   
-  var data = google.visualization.arrayToDataTable(data_array);
-  
-  var options = {
-    title: "Company Sales Yearly (" + startYear + " - " + endYear + ")",
-    curveType: "function",
-    width: 1000,
-    height: 500,
-    legend: 'none',
-    hAxis: {
-      title: "Period"
-    },
-    vAxis: {
-      title: "Income($)"
-    }
-  };
-  
-  var chart = new google.visualization.LineChart(document.getElementById("dataLineChart"));
-  
-  chart.draw(data, options);
+  if(data_array.length > 1){
+    var data = google.visualization.arrayToDataTable(data_array);
+
+    var options = {
+      title: "Company Sales Yearly (" + startYear + " - " + endYear + ")",
+      curveType: "function",
+      width: 1000,
+      height: 500,
+      legend: 'none',
+      hAxis: {
+        title: "Years"
+      },
+      vAxis: {
+        title: "Income($)"
+      }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById("dataLineChart"));
+    chart.draw(data, options);
+
+    straightForecast(data_array);
+  }
+  else {
+    document.getElementById("dataLineChart").innerHTML = "DATABASE HAS NO INFORMATION!";
+  }
 }
 
-// Creates a chart that shows monthly company sales of specified year in a line-chart format
+// Creates a chart that shows monthly company sales of specified year in a      line-chart format
 function dataChartMonthly(year) {
+  document.getElementById("dataLineChart").innerHTML = "";
+  document.getElementById("straightForecastChart").innerHTML = "";
+  
   var data_array = [
     ['Month', 'Sales'],
     ['January',  1000],
@@ -92,54 +104,108 @@ function dataChartMonthly(year) {
     ['December',  1500]
   ];
   
-  var data = google.visualization.arrayToDataTable(data_array);
-  
-  var options = {
-    title: "Company Sales Monthly (" + year + ")",
-    curveType: "function",
-    width: 1000,
-    height: 500,
-    legend: 'none',
-    hAxis: {
-      title: "Period"
-    },
-    vAxis: {
-      title: "Income($)"
-    }
-  };
-  
-  var chart = new google.visualization.LineChart(document.getElementById("dataLineChart"));
-  
-  chart.draw(data, options);
+  if (data_array.length > 1){
+    var data = google.visualization.arrayToDataTable(data_array);
+
+    var options = {
+      title: "Company Sales Monthly (" + year + ")",
+      curveType: "function",
+      width: 1000,
+      height: 500,
+      legend: 'none',
+      hAxis: {
+        title: "Months"
+      },
+      vAxis: {
+        title: "Income($)"
+      }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById("dataLineChart"));
+    chart.draw(data, options);
+
+    straightForecast(data_array);
+  }
+  else {
+    document.getElementById("dataLineChart").innerHTML = "DATABASE HAS NO INFORMATION!";
+  }
 }
 
-// Creates a chart that shows seasonal company sales of specified year in a line-chart format
+// Creates a chart that shows seasonal company sales of specified year in a      line-chart format
 function dataChartSeasonal(year) {
+  document.getElementById("dataLineChart").innerHTML = "";
+  document.getElementById("straightForecastChart").innerHTML = "";
+  
   var data_array = [
-    ['Year', 'Sales'],
+    ['Season', 'Sales'],
     ['Winter',  1000],
     ['Spring',  1170],
     ['Summer',  660],
     ['Fall',  1030]
   ];
   
-  var data = google.visualization.arrayToDataTable(data_array);
+  if(data_array.length > 1){
+    var data = google.visualization.arrayToDataTable(data_array);
+
+    var options = {
+      title: "Company Sales Seasonal (" + year + ")",
+      curveType: "function",
+      width: 1000,
+      height: 500,
+      legend: 'none',
+      hAxis: {
+        title: "Seasons"
+      },
+      vAxis: {
+        title: "Income($)"
+      }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById("dataLineChart"));
+    chart.draw(data, options);
+
+    straightForecast(data_array);
+  }
+  else {
+    document.getElementById("dataLineChart").innerHTML = "DATABASE HAS NO INFORMATION!";
+  }
+}
+
+// Statistical analysis of the sales information
+function straightForecast(data) {
+  var straightLineArray = [
+    ["Period", "Growth"]
+  ];
+  
+  for(var i=1; i<data.length-1; i++) {
+    var temp = [];
+    var growth_period = data[i][0] + " - " + data[i][0];
+    var growth_amount = parseFloat((data[i+1][1] - data[i][1])/ data[i][1]);
+    temp.push(growth_period);
+    temp.push(growth_amount);
+    straightLineArray.push(temp);
+    temp = [];
+  }
+  
+  var data = google.visualization.arrayToDataTable(straightLineArray);
   
   var options = {
-    title: "Company Sales Seasonal (" + year + ")",
+    title: "Company Sales Growth",
     curveType: "function",
     width: 1000,
     height: 500,
     legend: 'none',
     hAxis: {
-      title: "Period"
+      title: "Periods"
     },
     vAxis: {
-      title: "Income($)"
+      title: "Growth(%)"
     }
   };
   
-  var chart = new google.visualization.LineChart(document.getElementById("dataLineChart"));
+  var chart = new google.visualization.LineChart(document.getElementById("straightForecastChart"));
   
   chart.draw(data, options);
 }
+
+// Display of the database information as a table, allowing the user to make    changes as they see fit.
