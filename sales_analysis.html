@@ -14,39 +14,45 @@
   </head>
   
   <body>
-    <!-- Header -->
-    <header>HEADER</header>
-    
-    <!-- Input area for the chart data -->
-    <div id="showChart" class="container">
-      <!-- Input area for the yearly sales -->
-      <div class="form-group col d-flex justify-center-content">
-        <div class="col-6">
-          <label for="yearlyRangeLower">Enter start year</label>
-          <input id="yearlyRangeLower" type="number" v-model="yearlyRangeLower"/>
-          <label for="yearlyRangeUpper">Enter end year</label>
-          <input id="yearlyRangeUpper" type="number" v-model="yearlyRangeUpper"/>
-          <input type="submit" v-on:click="yearly" value="Yearly"/>
-        </div>
+    <div>
+      <!-- Header -->
+      <div id="header" class="d-flex justify-content-center border-bottom mb-5 mt-4 pb-4">
+        <header class="font-weight-bold">HEADER</header>
       </div>
-      
-      <!-- Input area for the monthly or seasonal sales -->
-      <div class="from-group col d-flex justify-center-content">
-        <div class="col-6">
-          <label for="specificYear">Enter specific year</label>
-          <input id="specificYear" type="number" v-model="specificYear"/>
-          <input type="submit" v-on:click="monthly" value="Monthly"/>
-          <input type="submit" v-on:click="seasonal" value="Seasonal"/>
-        </div>
+
+      <!-- Input area for the chart data -->
+      <div id="showChart" class="container mt-5 mb-5">
+          <!-- Input area for the yearly sales -->
+          <div class="form-group col d-flex justify-content-center mb-5">
+            <div class="col-6">
+              <label for="yearlyRangeLower">Enter start year</label>
+              <input id="yearlyRangeLower" class="form-control" type="number" v-model="yearlyRangeLower"/>
+              <label for="yearlyRangeUpper">Enter end year</label>
+              <input id="yearlyRangeUpper" class="form-control" type="number" v-model="yearlyRangeUpper"/>
+              <input type="submit" class="btn btn-primary pl-5 pt-3 pb-3 pr-5" v-on:click="yearly" value="Yearly"/>
+            </div>
+          </div>
+
+          <!-- Input area for the monthly or seasonal sales -->
+          <div class="from-group col d-flex justify-content-center">
+            <div class="col-6">
+              <label for="specificYear">Enter specific year</label>
+              <input id="specificYear" class="form-control" type="number" v-model="specificYear"/>
+              <input type="submit" class="btn btn-primary pl-5 pt-3 pb-3 pr-5" v-on:click="monthly" value="Monthly"/>
+              <input type="submit" class="btn btn-primary pl-5 pt-3 pb-3 pr-5" v-on:click="seasonal" value="Seasonal"/>
+            </div>
+          </div>
+        
+        <!-- Shows the sales data graph -->
+        <div id="dataLineChart"></div>
+      </div>
+
+      <!-- Footer -->
+      <div id="footer" class="d-flex justify-content-center border-top mt-5  mb-4 pt-4 fixed-bottom">
+        <footer class="font-weight-bold">FOOTER</footer>
       </div>
     </div>
-    
-    <!-- Shows the sales data graph -->
-    <div id="dataLineChart"></div>
-    
-    <!-- Footer -->
-    <footer>FOOTER</footer>
-    
+
   </body>
   
   <!-- Vue.js CDN -->

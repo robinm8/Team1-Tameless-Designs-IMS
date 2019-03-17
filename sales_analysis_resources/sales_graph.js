@@ -65,7 +65,7 @@ function dataChartYearly(startYear, endYear) {
       title: "Period"
     },
     vAxis: {
-      title: "Income"
+      title: "Income($)"
     }
   };
   
@@ -104,7 +104,7 @@ function dataChartMonthly(year) {
       title: "Period"
     },
     vAxis: {
-      title: "Income"
+      title: "Income($)"
     }
   };
   
@@ -135,7 +135,7 @@ function dataChartSeasonal(year) {
       title: "Period"
     },
     vAxis: {
-      title: "Income"
+      title: "Income($)"
     }
   };
   
