@@ -3,7 +3,7 @@
   <head>
     <title>Sales Analysis</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- External CSS link -->
     <link rel="stylesheet" href="sales_analysis_resources/sales_analysis.css">
@@ -14,19 +14,54 @@
   </head>
   
   <body>
-    <header>Hello</header>
+    <!-- Header -->
+    <header>HEADER</header>
+    
+    <!-- Input area for the chart data -->
+    <div id="showChart" class="container">
+      <!-- Input area for the yearly sales -->
+      <div class="form-group col d-flex justify-center-content">
+        <div class="col-6">
+          <label for="yearlyRangeLower">Enter start year</label>
+          <input id="yearlyRangeLower" type="number" v-model="yearlyRangeLower"/>
+          <label for="yearlyRangeUpper">Enter end year</label>
+          <input id="yearlyRangeUpper" type="number" v-model="yearlyRangeUpper"/>
+          <input type="submit" v-on:click="yearly" value="Yearly"/>
+        </div>
+      </div>
+      
+      <!-- Input area for the monthly or seasonal sales -->
+      <div class="from-group col d-flex justify-center-content">
+        <div class="col-6">
+          <label for="specificYear">Enter specific year</label>
+          <input id="specificYear" type="number" v-model="specificYear"/>
+          <input type="submit" v-on:click="monthly" value="Monthly"/>
+          <input type="submit" v-on:click="seasonal" value="Seasonal"/>
+        </div>
+      </div>
+    </div>
     
     <!-- Shows the sales data graph -->
-    <div id="data_line_chart"></div>
+    <div id="dataLineChart"></div>
+    
+    <!-- Footer -->
+    <footer>FOOTER</footer>
     
   </body>
   
-  <script src=https://vuejs.org/js/vue.min.js></script>
+  <!-- Vue.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.js"></script>
+  
+  <!-- Google charts CDN -->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  
+  <!-- External JS -->
   <script type="text/javascript" src="sales_analysis_resources/sales_analysis.js"></script>
   <script type="text/javascript" src="sales_analysis_resources/sales_graph.js"></script>
   
-  <script>
-    
-  </script>
+  <!-- jQuery script -->
+  <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  
+  <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </html>
