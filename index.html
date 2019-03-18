@@ -4,70 +4,62 @@
     <title>Sales Database</title>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<link rel = "stylesheet" type = "text/css" href = "style.css" />
+		<link rel="stylesheet" type="text/css" href="style.css" />
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </head>
 
   <body>
-		<div id="mainDiv">
-			<table class="table table-bordered">
-				
-    		<thead>
-    			<tr>
-						<th v-for="col in headRow"> {{ col }} </th>
-      		</tr>
-    		</thead>
-				
-    		<tbody>
-					
-					<tr>
-        		<td v-if="editMode==false">{{ id }} </td>
-						<td v-if="editMode==true"> <input type="text" v-model="id" placeholder="Enter data here"> </td>
-						
-						<td v-if="editMode==false">{{ item }} </td>
-						<td v-if="editMode==true"> <input type="text" v-model="item" placeholder="Enter data here"> </td>
-						
-						<td v-if="editMode==false">{{ size }} </td>
-						<td v-if="editMode==true"> <input type="text" v-model="size" placeholder="Enter data here"> </td>
-						
-						<td v-if="editMode==false">{{ color }} </td>
-						<td v-if="editMode==true"> <input type="text" v-model="color" placeholder="Enter data here"> </td>
-						
-						<td v-if="editMode==false">{{ design }} </td>
-						<td v-if="editMode==true"> <input type="text" v-model="design" placeholder="Enter data here"> </td>
-						
-						<td v-if="editMode==false">{{ quantity }} </td>
-						<td v-if="editMode==true"> <input type="text" v-model="quantity" placeholder="Enter data here"> </td>
-						
-						<td v-if="editMode==false">{{ totalPrice }} </td>
-						<td v-if="editMode==true"> <input type="text" v-model="totalPrice" placeholder="Enter data here"> </td>
-        		
-						<td><button v-if="editMode==false" @click="edit">Edit Row </button><button v-if="editMode==true" @click="save">Save Row </button></td>
-						
-      		</tr>
-    		</tbody>
-  		</table>
-	</div>
 		
-	<!-- Vue CDN -->
+		<div id="mainDiv" class="container-fluid">
+  		<div class="row">
+				<div class="col-lg-2"></div>
+    		<div class="col-lg-1 heading"><br/><h5>Id #</h5></div>
+				<div class="col-lg-1"><br/><h5>Item</h5></div>
+				<div class="col-lg-1"><br/><h5>Size</h5></div>
+				<div class="col-lg-1"><br/><h5>Color</h5></div>
+				<div class="col-lg-1"><br/><h5>Design</h5></div>
+				<div class="col-lg-1"><br/><h5>Quantity</h5></div>
+				<div class="col-lg-1"><br/><h5>Total Price</h5></div>
+				<div class="col-lg-2"><br/></div>
+  		</div>
+  		<div class="row">
+				<div class="col-lg-2"></div>
+    		<div class="col-lg-1" v-if="editMode==false">{{ id }} </div>
+				<div class="col-lg-1" v-if="editMode==true"> <input class="form-control" type="text" v-model="id" placeholder=""> </div>
+				
+				<div class="col-lg-1" v-if="editMode==false">{{ item }} </div>
+				<div class="col-lg-1" v-if="editMode==true"> <input class="form-control" type="text" v-model="item" placeholder=""> </div>
+				
+				<div class="col-lg-1" v-if="editMode==false">{{ size }} </div>
+				<div class="col-lg-1" v-if="editMode==true"> <input class="form-control" type="text" v-model="size" placeholder=""> </div>
+				
+				<div class="col-lg-1" v-if="editMode==false">{{ color }} </div>
+				<div class="col-lg-1" v-if="editMode==true"> <input class="form-control" type="text" v-model="color" placeholder=""> </div>
+				
+				<div class="col-lg-1" v-if="editMode==false">{{ design }} </div>
+				<div class="col-lg-1" v-if="editMode==true"> <input class="form-control" type="text" v-model="design" placeholder=""> </div>
+				
+				<div class="col-lg-1" v-if="editMode==false">{{ quantity }} </div>
+				<div class="col-lg-1" v-if="editMode==true"> <input class="form-control" type="text" v-model="quantity" placeholder=""></div>
+				
+				<div class="col-lg-1" v-if="editMode==false">{{ totalPrice }} </div>
+				<div class="col-lg-1" v-if="editMode==true"> <input class="form-control" type="text" v-model="totalPrice" placeholder=""> </div>
+
+				<div class="col-lg-1"> 
+					<button v-if="editMode==false" @click="edit"> Edit Row </button>
+					<button v-if="editMode==true" @click="save"> Save Row </button>
+				</div> 
+				<div class="col-lg-2"></div>
+  		</div>
+  	</div>
+		<!-- Vue CDN -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
 	<script>
 		new Vue({ 
 			el: '#mainDiv', 
 			data: {
-				headRow: [
-					'Id',
-					'Item Name',
-					'Size',
-					'Color',
-					'Design',
-					'Quantity',
-					'Total Price',
-					' ',
-				],
-				
 				editMode: true,
 			},
 			methods: {
@@ -80,5 +72,5 @@
 			},
 		})
 		</script>	
-  </body>
-</html>
+	</body>
+</html>	
