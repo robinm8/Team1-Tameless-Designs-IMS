@@ -11,19 +11,14 @@
   </head>
 
   <body>
-		<div id="mainDiv" class="container-fluid">
-			
-			<nav class="navbar">
-    		<div>
-      		<a class="navbar-brand" href="https://tamelessdesigns.com/">Tameless Designs</a>
-    		</div>
-    		<ul class="navbar-nav">
-      		<li class="selected"><a href="index.html">Sales Ledger</a></li>
-      		<li><a href="sales_analysis.html">Sales Analysis</a></li>
-    		</ul>
+		<nav class="navbar">
+      	<a href="https://tamelessdesigns.com/">Tameless Designs</a>
+				<h4 class="navbar-brand">SALES DATA PORTAL</h4>
+    		<a href="sales_analysis.html">Sales Analysis</a>
 			</nav>
-			
-  		<div class="row panel-default">
+		
+		<div id="mainDiv" class="container-fluid">
+  		<div class="row headRow">
 				<div class="col-lg-2"></div>
     		<div class="col-lg-1"><br/><h5>Id #</h5></div>
 				<div class="col-lg-1"><br/><h5>Item</h5></div>
@@ -31,11 +26,14 @@
 				<div class="col-lg-1"><br/><h5>Color</h5></div>
 				<div class="col-lg-1"><br/><h5>Design</h5></div>
 				<div class="col-lg-1"><br/><h5>Quantity</h5></div>
-				<div class="col-lg-1"><br/><h5>Total Price</h5></div>
+				<div class="col-lg-1"><br/><h5>Price</h5></div>
+				<div class="col-lg-1"><br/></div>
   		</div>
+			
+			<!--New Row-->
   		<div class="row">
 				<div class="col-lg-2"></div>
-    		<div class="col-lg-1 panel-body" v-if="editMode==false">{{ id }} </div>
+    		<div class="col-lg-1" v-if="editMode==false">{{ id }} </div>
 				<div class="col-lg-1" v-if="editMode==true"> <input class="form-control" type="text" v-model="id" placeholder=""> </div>
 				
 				<div class="col-lg-1" v-if="editMode==false">{{ item }} </div>
@@ -57,13 +55,14 @@
 				<div class="col-lg-1" v-if="editMode==true"> <input class="form-control" type="text" v-model="totalPrice" placeholder=""> </div>
 
 				<div class="col-lg-1"> 
-					<button v-if="editMode==false" @click="edit"> Edit Row </button>
-					<button v-if="editMode==true" @click="save"> Save Row </button>
+					<button v-if="editMode==false" @click="edit"> Edit </button>
+					<button v-if="editMode==true" @click="save"> Save </button>
 				</div> 
-				<div class="col-lg-2"></div>
   		</div>
-			<footer><a href="https://tamelessdesigns.com/">Tameless Designs</a></footer>
 		</div>
+		<footer><b>Tameless Designs</b>
+			<br/>Sales Database and Analytics Portal</footer>
+		
 		<!-- Vue CDN -->
   	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
 			<script>
