@@ -1,0 +1,52 @@
+body {
+	background-image: url(workspace.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+nav {
+	background-color: black;
+	opacity: 0.75;
+	font-weight: bold;
+}
+h4 {
+	color: white;
+}
+h5 {
+	color: grey;
+}
+a {
+	padding-top: 10%;
+	color: white;
+}
+a:hover {
+	color: lightblue;
+}
+footer {
+	background-color: darkgray;
+	opacity: 0.8;
+	color: white;
+	text-shadow: 2px 2px 5px black;
+	text-align: center;
+	
+	position: fixed;
+  left: 0;
+  bottom: 0;
+	width: 100%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+.col-lg-1 {
+	border: 1px solid darkgrey;
+	background-color: black;
+	opacity: 0.9;
+	color: white;
+	font-weight: bold;
+	padding: 1%;
+	text-align: center;
+}
+.headRow {
+	margin-top: 7%;
+}
+button {
+	font-weight: bold;
+}

@@ -4,26 +4,33 @@
     <title>Sales Database</title>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<link rel="stylesheet" type="text/css" href="style.css" />
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css" />
   </head>
 
   <body>
+		<nav class="navbar">
+      	<a href="https://tamelessdesigns.com/">Tameless Designs</a>
+				<h4 class="navbar-brand">SALES DATA PORTAL</h4>
+    		<a href="sales_analysis.html">Sales Analysis</a>
+			</nav>
 		
 		<div id="mainDiv" class="container-fluid">
-  		<div class="row">
+  		<div class="row headRow">
 				<div class="col-lg-2"></div>
-    		<div class="col-lg-1 heading"><br/><h5>Id #</h5></div>
+    		<div class="col-lg-1"><br/><h5>Id #</h5></div>
 				<div class="col-lg-1"><br/><h5>Item</h5></div>
 				<div class="col-lg-1"><br/><h5>Size</h5></div>
 				<div class="col-lg-1"><br/><h5>Color</h5></div>
 				<div class="col-lg-1"><br/><h5>Design</h5></div>
 				<div class="col-lg-1"><br/><h5>Quantity</h5></div>
-				<div class="col-lg-1"><br/><h5>Total Price</h5></div>
-				<div class="col-lg-2"><br/></div>
+				<div class="col-lg-1"><br/><h5>Price</h5></div>
+				<div class="col-lg-1"><br/></div>
   		</div>
+			
+			<!--New Row-->
   		<div class="row">
 				<div class="col-lg-2"></div>
     		<div class="col-lg-1" v-if="editMode==false">{{ id }} </div>
@@ -48,29 +55,30 @@
 				<div class="col-lg-1" v-if="editMode==true"> <input class="form-control" type="text" v-model="totalPrice" placeholder=""> </div>
 
 				<div class="col-lg-1"> 
-					<button v-if="editMode==false" @click="edit"> Edit Row </button>
-					<button v-if="editMode==true" @click="save"> Save Row </button>
+					<button v-if="editMode==false" @click="edit"> Edit </button>
+					<button v-if="editMode==true" @click="save"> Save </button>
 				</div> 
-				<div class="col-lg-2"></div>
   		</div>
-  	</div>
+		</div>
+		<footer><b>Tameless Designs Data Portal</b></footer>
+		
 		<!-- Vue CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
-	<script>
-		new Vue({ 
-			el: '#mainDiv', 
-			data: {
-				editMode: true,
-			},
-			methods: {
-				edit: function(){
-					this.editMode = true;
+  	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
+			<script>
+			new Vue({ 
+				el: '#mainDiv', 
+				data: {
+					editMode: true,
 				},
-				save: function(){
-					this.editMode = false;
+				methods: {
+					edit: function(){
+						this.editMode = true;
+					},
+					save: function(){
+						this.editMode = false;
+					},
 				},
-			},
-		})
-		</script>	
+			})
+			</script>	
 	</body>
 </html>	
