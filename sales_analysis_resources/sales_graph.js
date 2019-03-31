@@ -2,6 +2,15 @@
   Javascript file for sales analysis that utilizes a combination of JavaScript, Vue.js, and jQuery
 */
 
+// Display of the database information as a table, allowing the user to make    changes as they see fit.
+
+$(document).ready( function() {
+  
+})
+
+
+
+
 // Vue object that allows user to decide what sales graph should be displayed
 //    - if yearly, a range of years is needed
 //    - if monthly or seasonal, a specific year is needed
@@ -207,5 +216,3 @@ function straightForecast(data) {
   
   chart.draw(data, options);
 }
-
-// Display of the database information as a table, allowing the user to make    changes as they see fit.
