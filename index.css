@@ -1,0 +1,19 @@
+.btn-success:hover,
+.btn-success:focus,
+.btn-success.active.focus,
+.btn-success.active:focus,
+.btn-success.active:hover,
+.btn-success:active.focus,
+.btn-success:active:focus,
+.btn-success:active:hover,
+.open>.dropdown-toggle.btn-success.focus,
+.open>.dropdown-toggle.btn-success:focus,
+.open>.dropdown-toggle.btn-success:hover {
+    background-color: blue;
+    border-color: blue;
+}
+
+.btn-success {
+    background-color: midnightblue;
+    border-color: midnightblue;
+}
