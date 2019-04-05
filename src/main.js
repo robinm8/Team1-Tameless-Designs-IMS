@@ -71,6 +71,13 @@ function authStatusChange (loggedIn, user) {
         }
 
         store.commit('ADD_MESSAGE', message_obj)
+
+        if (router.currentRoute.path == '/login') {
+          router.push({
+            path: '/'
+          })
+        }
+
     } else {
       router.push({
         name: 'login'

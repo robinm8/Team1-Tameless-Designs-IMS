@@ -9,13 +9,7 @@
 </template>
 
 <script>
-    import GridLoader from 'vue-spinner/src/GridLoader.vue'
 
-    export default {
-        components: {
-            GridLoader
-        }
-    }
 </script>
 
 <style>

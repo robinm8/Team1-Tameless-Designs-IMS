@@ -24,20 +24,18 @@
                 isLoading: false
             }
         },
-        // Now handled by "isLoggedIn" routing logic
-        //
-        // beforeRouteLeave(to, from, next) {
-        //     // this.authUI.delete(); // Now handled by "isLoggedIn" routing logic
-        //     next();
-        // },
+        beforeRouteLeave(to, from, next) {
+            this.authUI.delete();
+            next();
+        },
         mounted() {
             var uiConfig = {
-                'signInSuccessUrl': '/',
+                'signInSuccessUrl': '',
                 'callbacks': {
                     'signInSuccess': function(user, credential, redirectUrl) {
                         console.log(redirectUrl);
 
-                        return true;
+                        return false; // Disable signInSucess redirect
                     }
                 },
                 'signInOptions': [{
@@ -71,15 +69,15 @@
             loginWithEmailLocal() {
 
                 this.isLoading = true
+
                 let data = {
                     email: this.email,
                     password: this.password
                 }
-                this.loginWithEmail(data).then(() => {
-                    this.clearMessage()
 
+                this.loginWithEmail(data).then(() => {
                     this.$router.push({
-                        name: 'mainpage'
+                        path: '/'
                     })
                 }).catch((error) => {
                     let message_obj = {
@@ -87,6 +85,7 @@
                         messageClass: 'danger',
                         autoClose: true
                     }
+
                     this.addMessage(message_obj)
                 }).then(() => {
                     this.isLoading = false
