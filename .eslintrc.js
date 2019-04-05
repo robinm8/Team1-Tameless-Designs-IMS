@@ -9,7 +9,8 @@ module.exports = {
         'plugin:vue/essential'
     ],
     "parserOptions": {
-        "ecmaVersion": 2017,
+        parser: 'babel-eslint',
+        "ecmaVersion": 8,
         "sourceType": "module"
     },
     rules: {
