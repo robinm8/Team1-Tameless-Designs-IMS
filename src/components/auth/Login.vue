@@ -1,8 +1,17 @@
 <template>
-    <div class="thumbnail">
+    <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
-                <div id="firebaseui-auth-container"></div>
+            <div class="col-md-12">
+                <div class="thumbnail">
+                    <div class="row">
+                        <div v-if="isSuccess" class="pa-5 text-xs-center">
+                            <v-progress-circular :size="250" color="blue" indeterminate></v-progress-circular>
+                        </div>
+                        <div v-else class="pa-5 col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
+                            <div id="firebaseui-auth-container"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -11,22 +20,34 @@
 <script>
     import {
         mapActions,
+        mapGetters
     } from 'vuex'
 
     import firebaseui from 'firebaseui'
     import firebase from 'firebase'
 
     export default {
+        computed: {
+            ...mapGetters(['isLoggedIn', 'currentUser']),
+        },
         data() {
             return {
                 email: '',
                 password: '',
-                isLoading: false
+                isLoading: false,
+                isSuccess: false
             }
         },
         beforeRouteLeave(to, from, next) {
-            this.authUI.delete();
-            next();
+            if (this.isLoggedIn) {
+                this.isSuccess = true
+                this.authUI.delete();
+            }
+
+            setTimeout(function() {
+                next();
+            }, 500);
+
         },
         mounted() {
             var uiConfig = {
@@ -34,6 +55,8 @@
                 'callbacks': {
                     'signInSuccess': function(user, credential, redirectUrl) {
                         console.log(redirectUrl);
+
+                        this.isSuccess = true
 
                         return false; // Disable signInSucess redirect
                     }
@@ -76,6 +99,8 @@
                 }
 
                 this.loginWithEmail(data).then(() => {
+                    this.isSuccess = true
+
                     this.$router.push({
                         path: '/'
                     })

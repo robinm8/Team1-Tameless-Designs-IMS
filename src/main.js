@@ -64,6 +64,9 @@ function authStatusChange (loggedIn, user) {
     if (user) {
         // Load user-unique data
 
+
+
+
         let message_obj = {
             message: `Welcome back, ` + (user.displayName ? user.displayName : user.phoneNumber),
             messageClass: 'success',

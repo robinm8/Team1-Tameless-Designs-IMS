@@ -7,8 +7,8 @@ const state = {
 
 const mutations = {
   'AUTH_STATUS_CHANGE' (state) {
-    state.isLoggedIn = firebaseAuth().currentUser != null
     state.user = firebaseAuth().currentUser
+    state.isLoggedIn = firebaseAuth().currentUser != null
   }
 }
 
@@ -28,7 +28,9 @@ const getters = {
         emailVerified: state.user.emailVerified,
         photoUrl: state.user.photoURL,
         phoneNumber: state.user.phoneNumber,
-        uid: state.user.uid
+        uid: state.user.uid,
+        metadata: state.user.metadata,
+        isNewUser: (state.user.metadata.creationTime == state.user.metadata.lastSignInTime)
       }
     } else {
       return {}

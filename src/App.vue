@@ -1,18 +1,13 @@
 <template>
-    <div>
+    <div class="App">
         <app-header></app-header>
         <message-component></message-component>
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-12">
-                    <router-view></router-view>
-
-                </div>
-            </div>
-        </div>
+        <main class="App__main">
+            <transition name="fade" mode="out-in">
+                <router-view></router-view>
+            </transition>
+        </main>
     </div>
-
 </template>
 
 <script>
@@ -23,7 +18,7 @@
     import MessageComponent from './components/common/MessageComponent.vue';
     export default {
         components: {
-            appHeader: Header,
+            AppHeader: Header,
             MessageComponent
         },
         methods: {
@@ -71,5 +66,17 @@
 
     .inline-block {
         display: inline-block;
+    }
+
+    .fade-enter-active,
+    .fade-leave-active {
+        transition-duration: 0.5s;
+        transition-property: opacity;
+        transition-timing-function: ease;
+    }
+
+    .fade-enter,
+    .fade-leave-active {
+        opacity: 0
     }
 </style>

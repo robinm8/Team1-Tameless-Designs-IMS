@@ -21,7 +21,7 @@ const mutations = {
         messageClass: '',
         message: ''
       }
-    }, 3000)
+    }, 5000)
   },
   'CLEAR_MESSAGE' (state) {
     state.messageGroup = {
